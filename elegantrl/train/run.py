@@ -384,6 +384,10 @@ class Worker(Process):
         else:
             state, info_dict = env.reset()
         if args.num_envs == 1:
+            print("state.shape")
+            print(state.shape)
+            print("args.state_dim")
+            print(args.state_dim)
             assert state.shape == (args.state_dim,)
             assert isinstance(state, np.ndarray)
             state = th.tensor(state, dtype=th.float32, device=agent.device).unsqueeze(0)
