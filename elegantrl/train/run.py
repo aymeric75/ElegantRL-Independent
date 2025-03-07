@@ -48,7 +48,7 @@ def train_agent_single_process(args: Config):
     agent.save_or_load_agent(args.cwd, if_save=False)
 
     '''init agent.last_state'''
-    if args.env_args['env_name'] = 'Ant':
+    if args.env_args['env_name'] == 'Ant':
         state = env.reset()
     else:
         state, info_dict = env.reset()
@@ -379,7 +379,7 @@ class Worker(Process):
         agent.save_or_load_agent(args.cwd, if_save=False)
 
         '''init agent.last_state'''
-        if args.env_args['env_name'] = 'Ant':
+        if args.env_args['env_name'] == 'Ant':
             state = env.reset()
         else:
             state, info_dict = env.reset()
