@@ -49,7 +49,7 @@ def train_agent_single_process(args: Config):
 
     '''init agent.last_state'''
     if args.env_args['env_name'] == 'Ant':
-        state = env.reset()[0]
+        state = env.reset()
     else:
         state, info_dict = env.reset()
     if args.num_envs == 1:
@@ -380,7 +380,7 @@ class Worker(Process):
 
         '''init agent.last_state'''
         if args.env_args['env_name'] == 'Ant':
-            state = env.reset()[0]
+            state = env.reset()
         else:
             state, info_dict = env.reset()
         if args.num_envs == 1:
