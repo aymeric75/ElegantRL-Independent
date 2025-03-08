@@ -174,6 +174,7 @@ def train_agent_multiprocessing_multi_gpu(args: Config):
     learners_pipe = [Pipe(duplex=True) for _ in args.learner_gpu_ids]
     process_list_list = []
     for gpu_id in args.learner_gpu_ids:
+        
         args = deepcopy(args)
         args.gpu_id = gpu_id
 
@@ -193,6 +194,11 @@ def train_agent_multiprocessing_multi_gpu(args: Config):
 
         print("argsargsargsargs")
         print(args)
+
+        print("args.gpu_id")
+        print(args.gpu_id)
+        print("args.learner_gpu_ids")
+        print(args.learner_gpu_ids)
         
         
         evaluator = EvaluatorProc(evaluator_pipe=evaluator_pipe, args=args)
