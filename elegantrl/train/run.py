@@ -200,7 +200,7 @@ def train_agent_multiprocessing_multi_gpu(args: Config):
         print("args.learner_gpu_ids")
         print(args.learner_gpu_ids)
         
-        
+        exit()
         evaluator = EvaluatorProc(evaluator_pipe=evaluator_pipe, args=args)
 
         '''Process append'''
