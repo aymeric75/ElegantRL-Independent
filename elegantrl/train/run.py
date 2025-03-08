@@ -190,6 +190,11 @@ def train_agent_multiprocessing_multi_gpu(args: Config):
                           args=args)
         workers = [Worker(worker_pipe=worker_pipe, learner_pipe=learner_pipe, worker_id=worker_id, args=args)
                    for worker_id, worker_pipe in enumerate(worker_pipes)]
+
+        print("argsargsargsargs")
+        print(args)
+        
+        
         evaluator = EvaluatorProc(evaluator_pipe=evaluator_pipe, args=args)
 
         '''Process append'''
