@@ -118,11 +118,24 @@ class Ant(VecTask):
         )
         print("get_axis_params(1.0, self.up_axis_idx)")  # Debugging output
         print(get_axis_params(1.0, self.up_axis_idx))  # Debugging output
+        print(self.up_axis_idx)
+        print(self.device)
+        print(self.num_envs)
+        
+        up_vec = to_torch(get_axis_params(1.0, self.up_axis_idx), device=self.device, dtype=torch.float32)
+        print("up_vec device:", up_vec.device)  # Should match self.device
+        print("Expected device:", self.device)
+        
+        self.up_vec = up_vec.to(self.device).repeat((self.num_envs, 1))
+        print("self.up_vec device:", self.up_vec.device)
 
+
+
+        
         # initialize some data used later on
-        self.up_vec = (
-            to_torch(get_axis_params(1.0, self.up_axis_idx), device=self.device, dtype=torch.float32).repeat((self.num_envs, 1))
-        )
+        #self.up_vec = (
+        #    to_torch(get_axis_params(1.0, self.up_axis_idx), device=self.device, dtype=torch.float32).repeat((self.num_envs, 1))
+        #)
         self.heading_vec = to_torch([1, 0, 0], device=self.device).repeat(
             (self.num_envs, 1)
         )
