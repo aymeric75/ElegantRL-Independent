@@ -128,9 +128,6 @@ class Ant(VecTask):
         
         self.up_vec = up_vec.to(self.device).repeat((self.num_envs, 1))
         print("self.up_vec device:", self.up_vec.device)
-
-        exit()
-
         
         # initialize some data used later on
         #self.up_vec = (
