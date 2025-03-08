@@ -201,11 +201,12 @@ def train_agent_multiprocessing_multi_gpu(args: Config):
         print(args.learner_gpu_ids)
 
         evaluator = EvaluatorProc(evaluator_pipe=evaluator_pipe, args=args)
-        exit()
+        
         '''Process append'''
         process_list = [learner, *workers, evaluator]
         process_list_list.append(process_list)
-
+        exit()
+        
     '''Process start'''
     for process_list in process_list_list:
         [process.start() for process in process_list]
