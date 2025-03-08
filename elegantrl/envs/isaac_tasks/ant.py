@@ -102,7 +102,8 @@ class Ant(VecTask):
         self.initial_dof_pos = torch.zeros_like(
             self.dof_pos, device=self.device, dtype=torch.float
         )
-        zero_tensor = torch.tensor([0.0], device=self.device)
+        # zero_tensor = torch.tensor([0.0], device=self.device)
+        zero_tensor = torch.zeros(1, dtype=torch.float, device=self.device)
         self.initial_dof_pos = torch.where(
             self.dof_limits_lower > zero_tensor,
             self.dof_limits_lower,
