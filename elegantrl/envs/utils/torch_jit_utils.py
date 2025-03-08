@@ -40,6 +40,9 @@ def compute_heading_and_up(
     target_dirs = normalize(to_target)
 
     torso_quat = quat_mul(torso_rotation, inv_start_rot)
+    print("torso_quat:", torso_quat.shape, torso_quat.dtype, torso_quat.device)
+    print("vec1:", vec1.shape, vec1.dtype, vec1.device)
+
     up_vec = get_basis_vector(torso_quat, vec1).view(num_envs, 3)
     heading_vec = get_basis_vector(torso_quat, vec0).view(num_envs, 3)
     up_proj = up_vec[:, up_idx]
