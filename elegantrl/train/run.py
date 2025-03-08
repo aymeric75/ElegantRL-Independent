@@ -455,6 +455,7 @@ class EvaluatorProc(Process):
         '''loop'''
         cwd = args.cwd
         break_step = args.break_step
+        args.gpu_id = args.gpu_id[0] if isinstance(args.gpu_id, tuple) else args.gpu_id
         device = th.device(f"cuda:{args.gpu_id}" if (th.cuda.is_available() and (args.gpu_id >= 0)) else "cpu")
         del args
 
