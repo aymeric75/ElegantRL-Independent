@@ -48,10 +48,10 @@ def train_agent_single_process(args: Config):
     agent.save_or_load_agent(args.cwd, if_save=False)
 
     '''init agent.last_state'''
-    if args.env_args['env_name'] == 'Ant':
-        state = env.reset()
-    else:
-        state, info_dict = env.reset()
+    #if args.env_args['env_name'] == 'Ant':
+    #    state = env.reset()
+    #else:
+    state, info_dict = env.reset()
     if args.num_envs == 1:
         assert state.shape == (args.state_dim,)
         assert isinstance(state, np.ndarray)
@@ -379,10 +379,10 @@ class Worker(Process):
         agent.save_or_load_agent(args.cwd, if_save=False)
 
         '''init agent.last_state'''
-        if args.env_args['env_name'] == 'Ant':
-            state = env.reset()[0]
-        else:
-            state, info_dict = env.reset()
+        #if args.env_args['env_name'] == 'Ant':
+        #    state = env.reset()[0]
+        #else:
+        state, info_dict = env.reset()
         if args.num_envs == 1:
             print("state.shape")
             print(state.shape)
