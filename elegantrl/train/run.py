@@ -205,11 +205,12 @@ def train_agent_multiprocessing_multi_gpu(args: Config):
         '''Process append'''
         process_list = [learner, *workers, evaluator]
         process_list_list.append(process_list)
-        exit()
+        
         
     '''Process start'''
     for process_list in process_list_list:
         [process.start() for process in process_list]
+    exit()
     '''Process join'''
     for process_list in process_list_list:
         [process.join() for process in process_list]
