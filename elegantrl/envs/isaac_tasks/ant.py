@@ -209,6 +209,7 @@ class Ant(VecTask):
         # Note - for this asset we are loading the actuator info from the MJCF
         actuator_props = self.gym.get_asset_actuator_properties(ant_asset)
         motor_efforts = [prop.motor_effort for prop in actuator_props]
+        torch.cuda.empty_cache()
         self.joint_gears = to_torch(motor_efforts, device=self.device)
 
         start_pose = gymapi.Transform()
